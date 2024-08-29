@@ -46,14 +46,14 @@ namespace op
   namespace binary
   {
     template <typename Lhs, typename Rhs>
-    struct add
+    struct sum
     {
     private:
       const Lhs &lhs;
       const Rhs &rhs;
 
     public:
-      explicit add(const Lhs &l, const Rhs &r) : lhs(l), rhs(r) {}
+      explicit sum(const Lhs &l, const Rhs &r) : lhs(l), rhs(r) {}
 
       template <typename T>
       operator T() const

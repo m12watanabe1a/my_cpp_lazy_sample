@@ -38,7 +38,7 @@ namespace lazy
     template <typename Lhs, typename Rhs>
     friend auto operator+(const Lhs &l, const Rhs &r)
     {
-      return op::binary::add(l, r);
+      return op::binary::sum(l, r);
     }
 
     template <typename Lhs, typename Rhs>

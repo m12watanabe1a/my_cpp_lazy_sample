@@ -7,7 +7,7 @@
 #include "lazy.hh"
 #include <iostream>
 
-int main(int argc, char *argv[])
+int main()
 {
   lazy::lazy<double> l1 = 1.0;
   lazy::lazy<double> l2 = 2.0;
@@ -21,10 +21,10 @@ int main(int argc, char *argv[])
 
   // The following line would print the type information of 'mid'
   // to show that it is a lazy expression.
-  // std::cout << typeid(mid).name() << std::endl;
+  std::cout << "Type of lazy expression: " << typeid(mid).name() << std::endl;
 
   // Evaluate the lazy expression and print the result
   lazy::lazy<double> result = mid;
-  std::cout << result << std::endl;
+  std::cout << "Result: " << result << std::endl;
   return EXIT_SUCCESS;
 }
