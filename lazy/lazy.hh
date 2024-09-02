@@ -20,20 +20,17 @@ namespace lazy
     lazy(T &v) : val(v) {};
     lazy(T &&v) : val(v) {};
     template <typename OT>
-    lazy(OT &o) : val(static_cast<T>(o))
-    {
+    lazy(OT &o) : val(static_cast<T>(o)) {
     }
 
     /* Unary Operator */
     template <typename Xpr>
-    friend auto operator+(const Xpr &x)
-    {
+    friend auto operator+(const Xpr &x) {
       return op::unary::pp(x);
     }
 
     template <typename Xpr>
-    friend auto operator-(const Xpr &x)
-    {
+    friend auto operator-(const Xpr &x) {
       return op::unary::mm(x);
     }
 

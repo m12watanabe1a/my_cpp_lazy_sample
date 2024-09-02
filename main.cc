@@ -4,7 +4,7 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-#include "lazy.hh"
+#include "lazy/lazy.hh"
 #include <iostream>
 
 int main()
