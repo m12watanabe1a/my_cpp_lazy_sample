@@ -13,12 +13,12 @@ namespace lazy
   struct lazy
   {
   private:
-    T val;
+    const T val;
 
   public:
     lazy() {};
-    lazy(T &v) : val(v) {};
-    lazy(T &&v) : val(v) {};
+    lazy(const T &v) : val(v) {};
+    lazy(const T &&v) : val(v) {};
     template <typename OT>
     lazy(OT &o) : val(static_cast<T>(o))
     {
