@@ -8,7 +8,6 @@
 #define __LAZY__LAZY__
 
 #include <ostream>
-#include <vector>
 #include "decl.hh"
 #include "base.hh"
 #include "operator.hh"
