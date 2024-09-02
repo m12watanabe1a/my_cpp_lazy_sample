@@ -4,14 +4,18 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
+#ifndef __LAZY__OPERATOR__
+#define __LAZY__OPERATOR__
+
+#include "decl.hh"
 #include <iostream>
 
-namespace op
+namespace lazy::op
 {
   namespace unary
   {
     template <typename XprType>
-    struct pp
+    struct pp : public base<pp<XprType>>
     {
     private:
       const XprType &xpr;
@@ -27,7 +31,7 @@ namespace op
     };
 
     template <typename XprType>
-    struct mm
+    struct mm : public base<mm<XprType>>
     {
     private:
       const XprType &xpr;
@@ -46,7 +50,7 @@ namespace op
   namespace binary
   {
     template <typename Lhs, typename Rhs>
-    struct sum
+    struct sum : public base<sum<Lhs, Rhs>>
     {
     private:
       const Lhs &lhs;
@@ -63,7 +67,7 @@ namespace op
     };
 
     template <typename Lhs, typename Rhs>
-    struct sub
+    struct sub : public base<sub<Lhs, Rhs>>
     {
     private:
       const Lhs &lhs;
@@ -80,7 +84,7 @@ namespace op
     };
 
     template <typename Lhs, typename Rhs>
-    struct mul
+    struct mul : public base<mul<Lhs, Rhs>>
     {
     private:
       const Lhs &lhs;
@@ -97,7 +101,7 @@ namespace op
     };
 
     template <typename Lhs, typename Rhs>
-    struct div
+    struct div : public base<div<Lhs, Rhs>>
     {
     private:
       const Lhs &lhs;
@@ -113,4 +117,6 @@ namespace op
       }
     };
   } // namespace binary
-} // namespace op
+} // namespace lazy::op
+
+#endif

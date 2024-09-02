@@ -4,70 +4,43 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-#include "operator.hh"
+#ifndef __LAZY__LAZY__
+#define __LAZY__LAZY__
+
 #include <ostream>
+#include <vector>
+#include "decl.hh"
+#include "base.hh"
+#include "operator.hh"
 
 namespace lazy
 {
   template <typename T>
-  struct lazy
+  struct lazy : public base<lazy<T>>
   {
   private:
-    T val;
+    T storage;
 
   public:
     lazy() {};
-    lazy(T &v) : val(v) {};
-    lazy(T &&v) : val(v) {};
+    lazy(T &v) : storage(v) {};
+    lazy(T &&v) : storage(v) {};
     template <typename OT>
-    lazy(OT &o) : val(static_cast<T>(o)) {
-    }
-
-    /* Unary Operator */
-    template <typename Xpr>
-    friend auto operator+(const Xpr &x) {
-      return op::unary::pp(x);
-    }
-
-    template <typename Xpr>
-    friend auto operator-(const Xpr &x) {
-      return op::unary::mm(x);
-    }
-
-    /* Binary Operator */
-    template <typename Lhs, typename Rhs>
-    friend auto operator+(const Lhs &l, const Rhs &r)
+    lazy(OT &o) : storage(static_cast<T>(o))
     {
-      return op::binary::sum(l, r);
-    }
-
-    template <typename Lhs, typename Rhs>
-    friend auto operator-(const Lhs &l, const Rhs &r)
-    {
-      return op::binary::sub(l, r);
-    }
-
-    template <typename Lhs, typename Rhs>
-    friend auto operator*(const Lhs &l, const Rhs &r)
-    {
-      return op::binary::mul(l, r);
-    }
-
-    template <typename Lhs, typename Rhs>
-    friend auto operator/(const Lhs &l, const Rhs &r)
-    {
-      return op::binary::div(l, r);
     }
 
     operator T() const
     {
-      return this->val;
+      return this->storage;
     }
 
-    friend std::ostream &operator<<(std::ostream &os, const lazy &l)
+    friend std::ostream &operator<<(std::ostream &os, const lazy &s)
     {
-      os << l.val;
+      os << s.storage;
       return os;
     }
   };
 } // namespace lazy
+
+#endif
