@@ -7,8 +7,7 @@
 #include "lazy/lazy.hh"
 #include <iostream>
 
-int main()
-{
+int main() {
   lazy::lazy<double> l1 = 1.0;
   lazy::lazy<double> l2 = 2.0;
   lazy::lazy<double> l3 = 3.0;
