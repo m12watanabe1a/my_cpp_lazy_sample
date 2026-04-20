@@ -3,7 +3,7 @@
 
 ## Requirements
 - `CXX Compiler`
-  - Support `c++17`
+  - Support `c++23`
 - `make`
 - `c++filt`
   - For type info
