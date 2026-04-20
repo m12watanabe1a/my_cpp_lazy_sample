@@ -4,7 +4,7 @@
 ## Requirements
 - `CXX Compiler`
   - Support `c++23`
-- `make`
+- `cmake`
 - `c++filt`
   - For type info
 
