@@ -1,0 +1,27 @@
+name: CI
+
+on:
+    push:
+        branches:
+            - main
+    pull_request:
+        types:
+            - opened
+            - synchronize
+            - reopened
+            - ready_for_review
+        branches:
+            - main
+
+jobs:
+    build:
+        runs-on: ubuntu-latest
+        steps:
+            - uses: actions/checkout@v6
+            - name: Install dependencies
+              run: sudo apt-get install -y cmake g++ libgtest-dev
+            - name: Build and test
+              run: |
+                cmake -B build -S ./cmake -D BUILD_TESTING=ON
+                cmake --build build
+                ctest --test-dir build --output-on-failure
