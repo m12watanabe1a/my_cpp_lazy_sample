@@ -12,6 +12,7 @@
 ```sh
 git clone https://github.com/m12watanabe1a/my_cpp_lazy_sample.git && cd my_cpp_lazy_sample
 make run
+cmake ./cmake -B build && cmake --build build && ./build/my_cpp_lazy_sample
 ```
 
 ## 単行演算子 (`T(T)`)
